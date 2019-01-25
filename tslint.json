@@ -1,0 +1,27 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:latest",
+    "tslint-react",
+    "tslint-config-airbnb",
+    "tslint-config-prettier"
+  ],
+  "jsRules": {},
+  "rules": {
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "jsx-no-lambda": false,
+    "jsx-boolean-value": [true, "never"],
+    "no-console": [true, "log", "error"],
+    "import-name": false,
+    "variable-name": [true, "allow-pascal-case", "allow-leading-underscore"],
+    "no-submodule-imports": false,
+    "object-literal-sort-keys": false,
+    "no-implicit-dependencies": false,
+    "ordered-imports": false,
+    "object-shorthand-properties-first": false,
+    "interface-over-type-literal": false,
+    "no-namespace": false,
+    "prefer-array-literal": [true, {"allow-type-parameters": true}],
+    "prefer-conditional-expression": false
+  }
+}
