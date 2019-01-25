@@ -15,7 +15,7 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "outDir": "build",
-    "lib": ["es2017"],
+    "lib": ["es2017", "dom"],
     "rootDir": ".",
     "baseUrl": "."
   },
