@@ -6,7 +6,7 @@ const getTopTooltipStyles = ({top, left, width}: ClientRect) => ({
 });
 
 const getRightTooltipStyles = ({top, right, height}: ClientRect) => ({
-  top: top + height / 2 + window.scrollY - 18,
+  top: top + height / 2 + window.scrollY - 12,
   left: right + window.scrollX + 8,
 });
 
@@ -16,7 +16,7 @@ const getBottomTooltipStyles = ({top, height, left, width}: ClientRect) => ({
 });
 
 const getLeftTooltipStyles = ({top, height, width, right}: ClientRect) => ({
-  top: top + height / 2 + window.scrollY - 18,
+  top: top + height / 2 + window.scrollY - 12,
   right: window.innerWidth - window.scrollX - right + width,
 });
 
