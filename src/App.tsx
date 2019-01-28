@@ -28,7 +28,11 @@ class App extends Component {
           <p>
             Lorem ipsum dolor sit amet,{' '}
             <Tooltip
-              render={() => <span>{position} tooltip render prop</span>}
+              render={() => (
+                <div>
+                  <span>{position} tooltip render prop</span>
+                </div>
+              )}
               position={position}
             >
               consectetur adipiscing elit
