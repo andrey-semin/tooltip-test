@@ -17,7 +17,7 @@ code {
   display: flex;
   flex: 1;
   height: 200vh;
-  width: 200vw;
+  width: 100vw;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -26,4 +26,9 @@ code {
 .row {
   display: flex;
   flex-direction: row;
+}
+
+img {
+  height: 100px;
+  margin-right: 10px;
 }

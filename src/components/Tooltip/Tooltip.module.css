@@ -1,7 +1,7 @@
 .root {
   color: red;
   position: relative;
-  background-color: pink;
+  text-decoration: underline;
 }
 
 .tooltip {

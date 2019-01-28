@@ -24,18 +24,22 @@ class App extends Component {
           </p>
         </div>
         <div>
-          <h5>Render prop</h5>
+          <h5>Hover over button</h5>
           <p>
             Lorem ipsum dolor sit amet,{' '}
             <Tooltip
               render={() => (
                 <div>
-                  <span>{position} tooltip render prop</span>
+                  <p>
+                    <span>{position} tooltip render prop</span>{' '}
+                    <FaBeer color="#ff9933" /> <FaBeer color="#ff9933" />
+                  </p>
+                  <p>You can even add custom markup to the tooltip!</p>
                 </div>
               )}
               position={position}
             >
-              consectetur adipiscing elit
+              <button>consectetur adipiscing elit</button>
             </Tooltip>
             . Nam vel turpis varius, egestas erat vel, pellentesque libero.
             Phasellus quam enim, facilisis sed augue at, faucibus finibus sem.
@@ -44,19 +48,19 @@ class App extends Component {
           </p>
         </div>
         <div>
-          <h5>With Icon</h5>
+          <h5>Hover over Icon</h5>
           <p>
             Lorem ipsum dolor sit amet,{' '}
             <Tooltip
               render={() => (
-                <span>
-                  <FaBeer color="#ff9933" size={20} />
-                  {position} tooltip render prop
-                </span>
+                <div>
+                  <img src="https://pictures.tripmasters.com/images/asst/984/amsterdam_-_canal_and_boat_-662518-500.jpg" />
+                  <span>{position} tooltip render prop</span>
+                </div>
               )}
               position={position}
             >
-              consectetur adipiscing elit
+              <FaBeer color="#ff9933" />
             </Tooltip>
             . Nam vel turpis varius, egestas erat vel, pellentesque libero.
             Phasellus quam enim, facilisis sed augue at, faucibus finibus sem.
