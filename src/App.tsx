@@ -1,71 +1,76 @@
 import React, {Component} from 'react';
-import {Tooltip} from './components';
+import FaBeer from 'react-icons/lib/fa/beer';
+import {Tooltip, TooltipPosition} from './components';
 
 class App extends Component {
+  public renderSection = (position: TooltipPosition) => (
+    <div>
+      <h3>{position}</h3>
+      <div className="row">
+        <div>
+          <h5>Plain text</h5>
+          <p>
+            Lorem ipsum dolor sit amet,{' '}
+            <Tooltip
+              render={`Inline ${position} tooltip string`}
+              position={position}
+            >
+              consectetur adipiscing elit
+            </Tooltip>
+            . Nam vel turpis varius, egestas erat vel, pellentesque libero.
+            Phasellus quam enim, facilisis sed augue at, faucibus finibus sem.
+            Nam dictum dolor urna, id porttitor dolor fermentum id. Vivamus
+            congue interdum urna ac varius.
+          </p>
+        </div>
+        <div>
+          <h5>Render prop</h5>
+          <p>
+            Lorem ipsum dolor sit amet,{' '}
+            <Tooltip
+              render={() => <span>{position} tooltip render prop</span>}
+              position={position}
+            >
+              consectetur adipiscing elit
+            </Tooltip>
+            . Nam vel turpis varius, egestas erat vel, pellentesque libero.
+            Phasellus quam enim, facilisis sed augue at, faucibus finibus sem.
+            Nam dictum dolor urna, id porttitor dolor fermentum id. Vivamus
+            congue interdum urna ac varius.
+          </p>
+        </div>
+        <div>
+          <h5>With Icon</h5>
+          <p>
+            Lorem ipsum dolor sit amet,{' '}
+            <Tooltip
+              render={() => (
+                <span>
+                  <FaBeer color="#ff9933" size={20} />
+                  {position} tooltip render prop
+                </span>
+              )}
+              position={position}
+            >
+              consectetur adipiscing elit
+            </Tooltip>
+            . Nam vel turpis varius, egestas erat vel, pellentesque libero.
+            Phasellus quam enim, facilisis sed augue at, faucibus finibus sem.
+            Nam dictum dolor urna, id porttitor dolor fermentum id. Vivamus
+            congue interdum urna ac varius.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+
   public render() {
     return (
-      <div
-        style={{
-          flex: 1,
-          height: '100vh',
-          justifyContent: 'center',
-          alignItems: 'center',
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
-        <p>
-          Lorem ipsum dolor sit amet,{' '}
-          <Tooltip render="tooltip">consectetur adipiscing elit</Tooltip>. Nam
-          vel turpis varius, egestas erat vel, pellentesque libero. Phasellus
-          quam enim, facilisis sed augue at, faucibus finibus sem. Nam dictum
-          dolor urna, id porttitor dolor fermentum id. Vivamus congue interdum
-          urna ac varius. Ut nec odio eget justo mollis sodales. Curabitur ac
-          enim sit amet massa posuere fermentum ac sed augue. Aliquam eu mattis
-          diam, nec{' '}
-          <Tooltip
-            render={() => (
-              <div>
-                <p>
-                  Nam vel turpis varius, egestas erat vel, pellentesque libero.
-                </p>
-                <p>
-                  Nam vel turpis varius, egestas erat vel, pellentesque libero.
-                </p>
-                <p>
-                  Nam vel turpis varius, egestas erat vel, pellentesque libero.
-                </p>
-                <p>
-                  Nam vel turpis varius, egestas erat vel, pellentesque libero.
-                </p>
-                <p>
-                  Nam vel turpis varius, egestas erat vel, pellentesque libero.
-                </p>
-                <p>
-                  Nam vel turpis varius, egestas erat vel, pellentesque libero.
-                </p>
-                <p>
-                  Nam vel turpis varius, egestas erat vel, pellentesque libero.
-                </p>
-                <p>
-                  Nam vel turpis varius, egestas erat vel, pellentesque libero.
-                </p>
-                <p>
-                  Nam vel turpis varius, egestas erat vel, pellentesque libero.
-                </p>
-              </div>
-            )}
-          >
-            hendrerit
-          </Tooltip>{' '}
-          risus.
-        </p>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
+      <div className="container">
+        {this.renderSection(TooltipPosition.Top)}
+        {this.renderSection(TooltipPosition.Right)}
+        {this.renderSection(TooltipPosition.Bottom)}
+        {this.renderSection(TooltipPosition.Left)}
       </div>
     );
   }

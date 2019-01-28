@@ -1,9 +1,26 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
+import cn from 'classnames';
 import styles from './Tooltip.module.css';
-import {TOOLTIP_CONTAINER_ID} from './constants';
+import {TOOLTIP_CONTAINER_ID, TooltipPosition} from './constants';
+import {makeTooltipStyles} from './utils';
 
-export class Tooltip extends React.Component<any, any> {
+type TooltipRenderProp = () => React.ReactNode;
+interface ITooltipProps {
+  children: React.ReactNode;
+  render: string | TooltipRenderProp;
+  position?: TooltipPosition;
+}
+
+interface ITooltipState {
+  sourceRef: HTMLSpanElement | null;
+  active: boolean;
+}
+
+export class Tooltip extends React.Component<ITooltipProps, ITooltipState> {
+  public static defaultProps = {
+    position: TooltipPosition.Top,
+  };
   private tooltipWrapper: any = null;
 
   constructor(props: any) {
@@ -48,26 +65,29 @@ export class Tooltip extends React.Component<any, any> {
     return render();
   };
 
-  public getTooltipStyles = (sourceRef: HTMLSpanElement) => {
-    const {top, left, width} = sourceRef.getBoundingClientRect();
-
-    const tooltipStyles = {
-      bottom: window.innerHeight - top + 8 - window.scrollY,
-      left: left + width / 2 + window.scrollX,
-    };
-
-    return tooltipStyles;
+  public getTooltipContainerClassName = () => {
+    const {position} = this.props;
+    return cn(styles.tooltipContainerBasic, {
+      [styles.tooltipContainerTop]: position === TooltipPosition.Top,
+      [styles.tooltipContainerRight]: position === TooltipPosition.Right,
+      [styles.tooltipContainerBottom]: position === TooltipPosition.Bottom,
+      [styles.tooltipContainerLeft]: position === TooltipPosition.Left,
+    });
   };
 
   public renderTooltip = () => {
     const {sourceRef, active} = this.state;
+    const {position = TooltipPosition.Top} = this.props;
 
     if (active && sourceRef) {
-      const tooltipStyles = this.getTooltipStyles(sourceRef);
+      const tooltipStyles = makeTooltipStyles(
+        position,
+        sourceRef.getBoundingClientRect(),
+      );
 
       return ReactDOM.createPortal(
         <div className={styles.tooltip} style={tooltipStyles}>
-          <div className={styles.tooltipContainer}>
+          <div className={this.getTooltipContainerClassName()}>
             {this.renderTooltipContent()}
           </div>
         </div>,
@@ -80,6 +100,7 @@ export class Tooltip extends React.Component<any, any> {
 
   public render() {
     const {children} = this.props;
+
     const source = (
       <span
         className={styles.root}

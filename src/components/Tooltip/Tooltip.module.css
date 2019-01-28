@@ -8,16 +8,15 @@
   position: absolute;
 }
 
-.tooltipContainer {
+.tooltipContainerBasic {
   position: relative;
-  left: -50%;
   padding: 8px 16px;
   border-radius: 4px;
   background: #424242;
   color: white;
 }
 
-.tooltipContainer::after {
+.tooltipContainerBasic::after {
   content: '';
   position: absolute;
   bottom: -10px;
@@ -25,4 +24,41 @@
   border-width: 5px;
   border-style: solid;
   border-color: #424242 transparent transparent transparent;
+}
+
+.tooltipContainerBasic.tooltipContainerRight {
+  left: auto;
+}
+
+.tooltipContainerBasic.tooltipContainerRight::after {
+  border-color: transparent #424242 transparent transparent;
+  left: -10px;
+  bottom: auto;
+  top: calc(50% - 5px);
+}
+
+.tooltipContainerBasic.tooltipContainerTop {
+  left: -50%;
+}
+
+.tooltipContainerBasic.tooltipContainerBottom {
+  left: -50%;
+}
+
+.tooltipContainerBasic.tooltipContainerBottom::after {
+  border-color: transparent transparent #424242 transparent;
+  top: -10px;
+  bottom: auto;
+}
+
+.tooltipContainerBasic.tooltipContainerLeft {
+  left: -10px;
+}
+
+.tooltipContainerBasic.tooltipContainerLeft::after {
+  border-color: transparent transparent transparent #424242;
+  left: auto;
+  right: -10px;
+  bottom: auto;
+  top: calc(50% - 5px);
 }
